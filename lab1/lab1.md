@@ -104,7 +104,9 @@ CREATE TABLE Student (
 # Zadanie 5
 1. Czy w tabeli emp zawarta jest informacja o której godzinie zostali zatrudnieni wszyscy pracownicy?
 
-- Nie. Kolumna hiredate ma typ danych DATE, zatem przechowuje tylko datę (dzień, miesiąc, rok) bez informacji o godzinie.
+```text
+Nie. Kolumna hiredate ma typ danych DATE, zatem przechowuje tylko datę (dzień, miesiąc, rok) bez informacji o godzinie.
+```
 
 2. Którzy pracownicy zostali zatrudnieni w 1982?
 
