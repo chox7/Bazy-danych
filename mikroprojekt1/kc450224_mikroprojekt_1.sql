@@ -1,3 +1,4 @@
+-- Tworzenie tabeli
 CREATE TABLE publikacje (
   ID      NUMBER(3)  NOT NULL PRIMARY KEY, 
   Tytul   VARCHAR(200) NOT NULL,
@@ -5,6 +6,8 @@ CREATE TABLE publikacje (
   Autorzy NUMBER(2)  NOT NULL,
   Punkty  NUMBER(3)  NOT NULL
 );
+
+-- Wstawianie danych
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (1,'Function definitions for compound values in object-oriented languages',2017,2,70);
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (2,'Regular Separability of Parikh Automata',2017,4,140);
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (3,'Separability of Reachability Sets of Vector Addition Systems',2017,4,140);
@@ -394,5 +397,10 @@ INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (386,'The Unconstrai
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (387,'Aggregate Queries on Sparse Databases',2020,1,200);
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (388,'Register Automata with Extrema Constraints, and an Application to Two-Variable Logic',2020,2,200);
 INSERT INTO publikacje (ID,Tytul,Rok,Autorzy,Punkty) VALUES (389,'Automated inference of gene regulatory networks using explicit regulatory modules',2020,2,70);
+
+
+-- Zapytanie
 SELECT * FROM publikacje WHERE rok = 2020 AND punkty / autorzy >= 100 ORDER BY autorzy;
+
+-- Usuwanie tabeli
 DROP TABLE publikacje;
