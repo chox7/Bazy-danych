@@ -1,0 +1,42 @@
+SQL> @kc450224_mikroprojekt_4
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+rows will be truncated
+
+rows will be truncated
+
+rows will be truncated
+
+
+PATH1                                                                                                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Pilipczuk Mi                                                                                                                                                                                            
+Pilipczuk Mi -> Marek                                                                                                                                                                                   
+Pilipczuk Mi -> Marek                                                                                                                                                                                   
+Pilipczuk Mi -> Jan                                                                                                                                                                                     
+Pilipczuk Mi -> Marek -> Marek                                                                                                                                                                          
+Pilipczuk Mi -> Marek -> Jan                                                                                                                                                                            
+Pilipczuk Mi -> Marek -> Jan                                                                                                                                                                            
+Pilipczuk Mi -> Jan -> Marek                                                                                                                                                                            
+Pilipczuk Mi -> Jan -> Marek                                                                                                                                                                            
+Pilipczuk Mi -> Marek -> Marek -> Jan                                                                                                                                                                   
+
+10 rows selected.
+
+
+Table dropped.
+
+SQL> SPOOL OFF
