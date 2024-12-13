@@ -1,44 +1,23 @@
 CREATE INDEX idx_e_src ON e(src);
 CREATE INDEX idx_e_tgt ON e(tgt);
-WITH Level1 AS (
-    SELECT src, tgt
-    FROM e
-    WHERE src = 0
+WITH level1 AS (
+	SELECT src, COUNT(*) AS cnt
+	FROM e GROUP BY src
 ),
-FilteredLevel2 AS (
-    SELECT *
-    FROM e
-    WHERE src != 0
+level2 AS (
+        SELECT e.src, SUM(level1.cnt) AS cnt
+        FROM e JOIN level1 ON e.tgt=level1.src GROUP BY e.src
 ),
-Level2 AS (
-    SELECT l1.tgt AS src, fl2.tgt AS tgt
-    FROM Level1 l1
-    JOIN FilteredLevel2 fl2 ON fl2.src = l1.tgt
+level3 AS (
+        SELECT e.src, SUM(level2.cnt) AS cnt
+        FROM e JOIN level2 ON e.tgt=level2.src GROUP BY e.src
 ),
-FilteredLevel3 AS (
-    SELECT *
-    FROM e
-    WHERE src NOT IN (SELECT DISTINCT src FROM Level2)
+level4 AS (
+        SELECT e.src, SUM(level3.cnt) AS cnt
+        FROM e JOIN level3 ON e.tgt=level3.src GROUP BY e.src
 ),
-Level3 AS (
-    SELECT l2.tgt AS src, fl3.tgt AS tgt
-    FROM Level2 l2
-    JOIN FilteredLevel3 fl3 ON fl3.src = l2.tgt
-),
-FilteredLevel4 AS (
-    SELECT *
-    FROM e
-    WHERE src NOT IN (SELECT DISTINCT src FROM Level3)
-),
-Level4 AS (
-    SELECT l3.tgt AS src, fl4.tgt AS tgt
-    FROM Level3 l3
-    JOIN FilteredLevel4 fl4 ON fl4.src = l3.tgt
-),
-Level5 AS (
-    SELECT l4.tgt AS src, e.tgt AS tgt
-    FROM Level4 l4
-    JOIN e ON e.src = l4.tgt
+level5 AS (
+        SELECT e.src, SUM(level4.cnt) AS cnt
+        FROM e JOIN level4 ON e.tgt=level4.src GROUP BY e.src
 )
-SELECT COUNT(*) AS num_paths
-FROM Level5;
+SELECT cnt FROM level5 WHERE src=0;
