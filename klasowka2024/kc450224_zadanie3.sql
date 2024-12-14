@@ -1,3 +1,4 @@
+--Kacper Chorzela kc450224 gr. 6 Zadanie 3
 WITH expenses AS (
     SELECT 
         Company.name AS name,

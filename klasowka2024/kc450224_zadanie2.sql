@@ -1,3 +1,4 @@
+--Kacper Chorzela kc450224 gr. 6 Zadanie 2
 WITH count_shareholders AS (
     SELECT 
         Company.name AS name, 

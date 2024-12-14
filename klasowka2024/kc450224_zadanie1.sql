@@ -1,3 +1,4 @@
+--Kacper Chorzela kc450224 gr. 6 Zadanie 1 
 WITH sold AS (
     SELECT 
         Company.name AS name,
