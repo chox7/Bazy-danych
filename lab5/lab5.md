@@ -1,3 +1,8 @@
+
+/home/students/inf/t/tk448325$
+/home/students/inf/m/mk448316/studia
+/home/students/inf/m/mj406163
+
 # Zadanie 1.  
 Stwórz tabelę E poleceniem powyżej, zaludnij ją korzystając ze skryptu ba10k.sql i odśwież statystyki. Obejrzyj plan zapytania powyżej, zmieniając na różne sposoby kolejność aliasów (bez zmiany warunku w klauzuli WHERE). Czy plan zmienia się w jakikolwiek sposób? 
 
