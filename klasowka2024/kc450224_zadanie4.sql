@@ -1,27 +1,18 @@
+--Kacper Chorzela kc450224 gr. 6 Zadanie 4
 WITH next_purchase AS (
     SELECT 
-        previous.id AS id,
-    FROM Sales previous
-    JOIN Sales next ON previous.buyer = next.buyer
-    WHERE previous.id < next.id
-    GROUP BY previous.id
-),
-purchase_2 AS (
-    SELECT
-        previous.id
-    FROM Sales previous
-    JOIN next_purchase ON next_purchase.id = Sales.id
-    JOIN Sales next ON next_purchase.id_next = next.id
-    WHERE 
-
-
+        Company.name AS name,
+        Sales.id AS id,
+        Sales.price AS previous_price,
+        SUM(Sales.price) OVER (PARTITION BY Company.name ORDER BY Sales.price DESC ROWS BETWEEN 1 FOLLOWING AND 1 FOLLOWING) AS next_price
+    FROM Company
+    JOIN Sales ON Sales.buyer = Company.name
 )
 SELECT 
     Company.name,
-    COUNT(next_purchase.id)
+    COALESCE(COUNT(next_purchase.id), 0) AS l_zakupow
 FROM Company
-LEFT JOIN Sales ON Sales.buyer = Company.name
-JOIN 
-JOIN next_purchase
-
-
+JOIN next_purchase ON next_purchase.name = Company.name
+WHERE next_purchase.previous_price >= 2 * next_purchase.next_price
+GROUP BY Company.name
+ORDER BY l_zakupow DESC;
